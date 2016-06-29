@@ -1,0 +1,703 @@
+<!doctype html>
+<html>
+    <head>		
+		<title>PgOnPalm - Discover</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	    <!-- font libs -->
+		<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+		
+		<!-- demo page styles -->
+		<link href="../dist/css/jplist.demo-pages.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<link href="../dist/css/custom.css" rel="stylesheet" type="text/css" />
+				
+		<!-- jQuery lib -->		
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		
+		<!-- jPList core js and css  -->
+		<link href="../dist/css/jplist.core.min.css" rel="stylesheet" type="text/css" />		
+		<script src="../dist/js/jplist.core.min.js"></script>
+				
+		<!-- jPList sort bundle -->
+		<script src="../dist/js/jplist.sort-bundle.min.js"></script>
+
+		<!-- jQuery UI js and css -->
+		<script  src="http://code.jquery.com/ui/1.12.0-rc.1/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0-rc.1/themes/smoothness/jquery-ui.css" />
+
+		<!-- jPList jQuery UI bundle js and css -->	
+		<link href="../dist/css/jplist.jquery-ui-bundle.min.css" rel="stylesheet" type="text/css" />
+		<script src="../dist/js/jplist.jquery-ui-bundle.min.js"></script>
+		
+		<!-- jPList textbox filter control -->
+		<script src="../dist/js/jplist.textbox-filter.min.js"></script>
+		<link href="../dist/css/jplist.textbox-filter.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- jPList pagination bundle -->
+		<script src="../dist/js/jplist.pagination-bundle.min.js"></script>
+		<link href="../dist/css/jplist.pagination-bundle.min.css" rel="stylesheet" type="text/css" />		
+		
+		<!-- jPList history bundle -->
+		<script src="../dist/js/jplist.history-bundle.min.js"></script>
+		<link href="../dist/css/jplist.history-bundle.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- jPList toggle bundle -->
+		<script src="../dist/js/jplist.filter-toggle-bundle.min.js"></script>
+		<link href="../dist/css/jplist.filter-toggle-bundle.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- jPList views control -->
+		<script src="../dist/js/jplist.list-grid-view.min.js"></script>
+		<link href="../dist/css/jplist.list-grid-view.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- jPList start -->
+		<script type="text/javascript">
+		$('document').ready(function(){
+		
+			/**
+			* user defined functions
+			*/
+			jQuery.fn.jplist.settings = {
+				/**
+				* PRICES: jquery ui range slider
+				*/
+				pricesSlider: function ($slider, $prev, $next){
+
+					$slider.slider({
+						min: 0
+						,max: 20000
+						,range: true
+						,values: [0, 20000]
+						,slide: function (event, ui){
+							$prev.text('INR ' + ui.values[0]);
+							$next.text('INR ' + ui.values[1]);
+						}
+					});
+				}
+
+				/**
+				* PRICES: jquery ui set values
+				*/
+				,priesValues: function ($slider, $prev, $next){
+
+					$prev.text('INR ' + $slider.slider('values', 0));
+					$next.text('INR ' + $slider.slider('values', 1));
+				}
+				
+			};
+				
+			$('#demo').jplist({				
+				itemsBox: '.list' 
+				,itemPath: '.list-item' 
+				,panelPath: '.jplist-panel'	
+			});
+		});
+		</script>
+		
+    </head>
+    <body>
+	
+		<!-- top bar -->
+		<div id="black-top-bar" class="box">
+			<div class="center">			
+				<div class="box">
+				<a class="pure-button" href="../index.html" id="home">
+			    <i class="fa fa-undo fa-lg"></i>&nbsp;
+    			Go back
+				</a>
+				</div>
+			</div>
+		</div>	
+				
+		<!-- header -->
+		<header id="header" class="box">
+			<div id="header-box" class="box">
+				<div class="center">			
+					<div class="box">
+
+						<!-- logo -->
+						<div class="align-center text-shadow" id="logo">	
+							<p>
+								<a title="" href="#">PgOnPalm - Discover Houses</a>
+							</p>
+							<h1 class="h1-30-normal" style="color:#4eb980">Filter according to your needs.</h1>
+						</div>
+
+					</div>
+				</div>					
+			</div>
+		</header>
+		
+		<!-- main content -->
+		<div class="box">
+			<div class="center">						
+				<div id="demo" class="box jplist" style="margin: 20px 0 50px 0">
+					<!-- panel -->																	
+
+					<div class="jplist-ios-button">
+						<i class="fa fa-sort"></i>
+						Filters
+					</div>
+					<div class="jplist-panel box panel-top">
+						<button 
+							type="button" 
+							class="jplist-reset-btn"
+							data-control-type="reset" 
+							data-control-name="reset" 
+							data-control-action="reset">
+							Reset &nbsp;<i class="fa fa-share"></i>
+						</button>
+					
+											
+						<!-- items per page dropdown -->
+						<div 
+						   class="jplist-drop-down" 
+						   data-control-type="items-per-page-drop-down" 
+						   data-control-name="paging" 
+						   data-control-action="paging">
+						   
+						   <ul>
+							 <li><span data-number="3"> 3 per page </span></li>
+							 <li><span data-number="5"> 5 per page </span></li>
+							 <li><span data-number="10" data-default="true"> 10 per page </span></li>
+							 <li><span data-number="all"> View All </span></li>
+						   </ul>
+						</div>
+						<!-- filter by title -->
+						<div class="text-filter-box">											
+							<i class="fa fa-search  jplist-icon"></i>												
+							<input 
+								data-path=".title" 
+								type="text" 
+								value="" 
+								placeholder="Filter by Location" 
+								data-control-type="textbox" 
+								data-control-name="title-filter" 
+								data-control-action="filter"
+							/>
+						</div>
+
+							<div 
+						   class="jplist-group"
+						   data-control-type="checkbox-group-filter"
+						   data-control-action="filter"
+						   data-control-name="themes">
+						   
+						   <input 
+							  data-path=".boys" 
+							  id="boys" 
+							  type="checkbox" 									
+						   /> 
+						   
+						   <label for="boys">Boys</label>
+						   
+						   <input 
+							  data-path=".girls" 										
+							  id="girls" 
+							  type="checkbox" 
+						   /> 
+							  
+						   <label for="girls">Girls</label>
+						   
+						</div>
+
+						<!-- checkbox filters -->
+						<div 
+						   class="jplist-group"
+						   data-control-type="checkbox-group-filter"
+						   data-control-action="filter"
+						   data-control-name="colors">
+						   
+						   <input 
+							  data-path=".ac" 
+							  id="ac" 
+							  type="checkbox" 									
+						   /> 
+						   
+						   <label for="ac">AC</label>
+						   
+						   <input 
+							  data-path=".nac" 										
+							  id="nac" 
+							  type="checkbox" 
+						   /> 
+							  
+						   <label for="nac">Non AC</label>
+						   
+						</div>
+
+							<!-- prices range slider -->
+							<!-- pricesSlider and priesValues are user function defined in jQuery.fn.jplist.settings -->
+							<div 
+								class="jplist-range-slider"
+								data-control-type="range-slider" 
+								data-control-name="range-slider-prices" 
+								data-control-action="filter"
+								data-path=".price"
+								data-slider-func="pricesSlider" 
+								data-setvalues-func="priesValues">
+													
+								<div class="value" data-type="prev-value"></div>
+								<div class="ui-slider" data-type="ui-slider"></div>
+								<div class="value" data-type="next-value"></div>
+							</div>
+						
+						<!-- views -->
+						<div  
+						   class="jplist-views" 
+						   data-control-type="views" 
+						   data-control-name="views" 
+						   data-control-action="views"
+						   data-default="jplist-grid-view">
+						   
+						   <button type="button" class="jplist-view jplist-list-view" data-type="jplist-list-view"></button>
+						   <button type="button" class="jplist-view jplist-grid-view" data-type="jplist-grid-view"></button>
+						   <button type="button" class="jplist-view jplist-thumbs-view" data-type="jplist-thumbs-view"></button>
+						</div>	
+						
+												
+						<!-- pagination control -->
+						<div 
+						   class="jplist-pagination" 
+						   data-control-type="pagination" 
+						   data-control-name="paging" 
+						   data-control-action="paging">
+						</div>
+						
+					</div>				 
+					
+					<!-- data -->   
+					<div class="list box text-shadow">					
+						
+						<!-- item 1 -->
+						<div class="list-item box">		
+						
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/calendar-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">GTB Nagar</p>
+								<p class="desc">A calendar is a system of organizing days for social, religious, commercial, or administrative purposes. This is done by giving names to periods of time, typically days, weeks, months, and years. The name given to each day is known as a date. Periods in a calendar (such as years and months) are usually, though not necessarily, synchronized with the cycle of the sun or the moon.</p>
+								<p class="theme">
+									<span class="boys">Boys</span>
+								</p>
+								<p class="price">18000</p>
+							</div>
+						</div>
+						
+						<!-- item 2 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/arch-2.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Non Air Conditioned</p>
+								<p class="title">Vijay Nagar</p>
+								<p class="desc">Architecture is both the process and product of planning, designing and construction. Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art. Historical civilizations are often identified with their surviving architectural achievements.</p>
+								<p class="theme">
+									<span class="boys">Boys</span>
+								</p>
+								<p class="price">2500</p>
+							</div>
+						</div>
+						
+						<!-- item 3 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/autumn-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Kalyan Vihar</p>
+								<p class="desc">Autumn or Fall is one of the four temperate seasons. Autumn marks the transition from summer into winter, in September (Northern Hemisphere) or March (Southern Hemisphere) when the arrival of night becomes noticeably earlier. The equinoxes might be expected to be in the middle of their respective seasons, but temperature lag (caused by the thermal latency of the ground and sea) means that seasons appear later than dates calculated from a purely astronomical perspective.</p>
+								
+								<p class="theme">
+									<span class="girls">Girls</span>
+								</p>
+								
+								<p class="price">12000</p>
+							</div>
+						</div>
+						
+						<!-- item 4 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/boats-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Non Air Conditioned</p>
+								<p class="title">Mahendru Enclave</p>
+								<p class="desc">A boat is a watercraft of any size designed to float or plane, to provide passage across water. Usually this water will be inland (lakes) or in protected coastal areas. However, boats such as the whaleboat were designed to be operated from a ship in an offshore environment. In naval terms, a boat is a vessel small enough to be carried aboard another vessel (a ship).</p>
+								
+								<p class="theme">
+									<span class="boys">Boys</span>
+								</p>
+								
+								<p class="price">11000</p>
+							</div>
+						</div>
+						
+						<!-- item 5 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/arch-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Shakti Nagar</p>
+								<p class="desc">An arch is a structure that spans a space and supports a load. Arches appeared as early as the 2nd millennium BC in Mesopotamian brick architecture and their systematic use started with the Ancient Romans who were the first to apply the technique to a wide range of structures.</p>
+								
+								<p class="theme">
+									<span class="girls">Girls</span>
+								</p>								
+								
+								<p class="price">5000</p>
+							</div>
+						</div>
+						
+						<!-- item 6 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/book-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Air Conditioned</p>
+								<p class="title">GTB Nagar</p>
+								<p class="desc">A book is a set of written, printed, illustrated, or blank sheets, made of ink, paper, parchment, or other materials, usually fastened together to hinge at one side. A single sheet within a book is called a leaf, and each side of a leaf is called a page. A book produced in electronic format is known as an electronic book (e-book).</p>
+								
+								<p class="theme">
+									<span class="boys">Boys</span>
+								</p>
+								
+								<p class="price">10000</p>
+							</div>
+						</div>
+						
+						<!-- item 7 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/business-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Shakti Nagar</p>
+								<p class="desc">A business (also known as enterprise or firm) is an organization engaged in the trade of goods, services, or both to consumers. Businesses are predominant in capitalist economies, where most of them are privately owned and administered to earn profit to increase the wealth of their owners. Businesses may also be not-for-profit or state-owned. A business owned by multiple individuals may be referred to as a company, although that term also has a more precise meaning.</p>
+								
+								<p class="theme">
+									<span class="girls">Girls</span>
+								</p>								
+								
+								<p class="price">15000</p>
+							</div>
+						</div>
+						
+						<!-- item 8 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/car-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Vijay Nagar</p>
+								<p class="desc">An automobile, autocar, motor car or car is a wheeled motor vehicle used for transporting passengers, which also carries its own engine or motor. Most definitions of the term specify that automobiles are designed to run primarily on roads, to have seating for one to eight people, to typically have four wheels, and to be constructed principally for the transport of people rather than goods.</p>
+								
+								<p class="theme">
+									<span class="girls">Girls</span>
+								</p>
+								
+								<p class="price">7000</p>
+							</div>
+						</div>
+						
+						<!-- item 9 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/christmas-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Non Air Conditioned</p>
+								<p class="title">Shakti Nagar</p>
+								<p class="desc">Christmas or Christmas Day is an annual commemoration of the birth of Jesus Christ, celebrated generally on December as a religious and cultural holiday by billions of people around the world. A feast central to the Christian liturgical year, it closes the Advent season and initiates the twelve days of Christmastide. Christmas is a civil holiday in many of the world"s nations, is celebrated by an increasing number of non-Christians, and is an integral part of the Christmas and holiday season.</p>
+								
+								<p class="theme">
+									<span class="boys">Boys</span>
+								</p>
+								
+								<p class="price">9000</p>
+							</div>
+						</div>
+						
+						<!-- item 10 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/christmas-2.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Non Air Conditioned</p>
+								<p class="title">GTB Nagar</p>
+								<p class="desc">The Christmas Toy is a 1986 made-for-TV movie by The Jim Henson Company. It originally aired on ABC on December 6, 1986, and was originally sponsored by Kraft Foods. Originally introduced by Kermit The Frog, it was released on VHS format in 1993. In 2008, HIT Entertainment (distributed by Lionsgate) released the special on DVD, but edited out Kermit"s appearance due to legal issues.</p>
+								
+								<p class="theme">
+									<span class="girls">Girls</span>
+								</p>
+								
+								<p class="price">3500</p>
+							</div>
+						</div>
+						
+						<!-- item 11 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/christmas-3.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Shakti Nagar</p>
+								<p class="desc">A Christmas tree is a decorated tree, usually an evergreen conifer such as pine or fir, traditionally associated with the celebration of Christmas. An artificial Christmas tree is an object made to resemble such a tree, usually made from polyvinyl chloride.</p>
+								
+								<p class="theme">
+									<span class="boys">Boys</span>
+								</p>
+								
+								<p class="price">16000</p>
+							</div>
+						</div>
+						
+						<!-- item 12 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/city-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Non Air Conditioned</p>
+								<p class="title">Vijay Nagar</p>
+								<p class="desc">A city is a relatively large and permanent settlement. Although there is no agreement on how a city is distinguished from a town within general English language meanings, many cities have a particular administrative, legal, or historical status based on local law.</p>
+								
+								<p class="theme">
+									<span class="girls">Girls</span>
+								</p>
+								
+								<p class="price">12500</p>
+							</div>
+						</div>
+						
+
+						
+						<!-- item 14 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/coffee-grass.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Mahendru Enclave</p>
+								<p class="desc">Coffee is a brewed beverage with a bitter, acidic flavor prepared from the roasted seeds of the coffee plant. The beans are found in coffee cherries, which grow on trees cultivated in over 70 countries, primarily in equatorial Latin America, Southeast Asia, South Asia and Africa. Green (unroasted) coffee is one of the most traded agricultural commodities in the world. Coffee can have a stimulating effect on humans due to its caffeine content. It is one of the most-consumed beverages in the world.</p>
+								
+								<p class="theme">
+									<span class="food">Food</span>
+									<span class="group2">Group 2</span>
+								</p>
+								
+								<p class="price">18000</p>
+							</div>
+						</div>
+						
+						<!-- item 15 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/coins.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Non Air Conditioned</p>
+								<p class="title">GTB Nagar</p>
+								<p class="desc">A coin is a piece of hard material that is standardized in weight, is produced in large quantities in order to facilitate trade, and primarily can be used as a legal tender. Coins are usually metal or a metallic material and sometimes made of synthetic materials, usually in the shape of a disc, and most often issued by a government. Coins are used as a form of money in transactions of various kinds, from the everyday circulation coins to the storage of large numbers of bullion coins. In the present day, coins and banknotes make up currency, the cash forms of all modern money systems.</p>
+								
+								<p class="theme">
+									<span class="girls">Girls</span>
+								
+								</p>
+								
+								<p class="price">3900</p>
+							</div>
+						</div>
+						
+						<!-- item 16 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/crayons.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Vijay Nagar</p>
+								<p class="desc">A crayon is a stick of colored wax, charcoal, chalk, or other materials used for writing, coloring, drawing, and other methods of illustration. A crayon made of oiled chalk is called an oil pastel; when made of pigment with a dry binder, it is simply a pastel; both are popular media for color artwork. A grease pencil or china marker (UK chinagraph pencil) is made of colored hardened grease and is useful for marking on hard, glossy surfaces such as porcelain or glass. Some fine arts companies such as Swiss Caran d"Ache manufacture water-soluble crayons, whose colors are easily mixed once applied to media.</p>
+								
+								<p class="theme">
+									<span class="boys">Boys</span>
+						
+								</p>
+								
+								<p class="price">14000</p>
+							</div>
+						</div>
+						
+						<!-- item 17 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/cupcakes.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Shakti Nagar</p>
+								<p class="desc">A cupcake (also British English: fairy cake; Australian English: patty cake or cup cake) is a small cake designed to serve one person, frequently baked in a small, thin paper or aluminum cup. As with larger cakes, frosting and other cake decorations, such as sprinkles, are common on cupcakes. Although their origin is unknown, recipes for cupcakes have been printed since at least the late 12th century.</p>
+								
+								<p class="theme">
+									<span class="girls">Girls</span>
+		
+								</p>
+								
+								<p class="price">12800</p>
+							</div>
+						</div>
+						
+						<!-- item 18 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/eggs-nest.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Non Air Conditioned</p>
+								<p class="title">Nests</p>
+								<p class="desc">A nest is a place of refuge to hold an animal"s eggs or provide a place to live or raise offspring. They are usually made of some organic material such as twigs, grass, and leaves; or may simply be a depression in the ground, or a hole in a tree, rock or building. Human-made materials, such as string, plastic, cloth, hair or paper, may be used.</p>
+								
+								<p class="theme">
+									<span class="nature">Nature</span>
+									<span class="group3">Group 3</span>
+								</p>
+								
+								<p class="price">6600</p>
+							</div>
+						</div>
+						
+						<!-- item 19 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/flower-1.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="nac">Non Air Conditioned</p>
+								<p class="title">Flower</p>
+								<p class="desc">A flower, sometimes known as a bloom or blossom, is the reproductive structure found in flowering plants (plants of the division Magnoliophyta, also called angiosperms). The biological function of a flower is to effect reproduction, usually by providing a mechanism for the union of sperm with eggs. Flowers may facilitate outcrossing (fusion of sperm and eggs from different individuals in a population) or allow selfing (fusion of sperm and egg from the same flower).</p>
+								
+								<p class="theme">
+									<span class="nature">Nature</span>
+									<span class="group1">Group 1</span>
+								</p>
+								
+								<p class="price">8500</p>
+							</div>
+						</div>
+						
+						<!-- item 20 -->
+						<div class="list-item box">					
+							<!-- img -->
+							<div class="img">
+								<img src="img/thumbs/flower-2.jpg" alt="" title=""/>
+							</div>
+							
+							<!-- data -->
+							<div class="block">
+								<p class="ac">Air Conditioned</p>
+								<p class="title">Pseudanthium</p>
+								<p class="desc">A pseudanthium (Greek for "false flower") or flower head is a special type of inflorescence, in which several flowers are grouped together to form a flower-like structure. The real flowers are generally small and greatly reduced, but can sometimes be quite large (as in the sunflower flower head). Pseudanthia take various forms. The individual flowers of a pseudanthium can be called florets.</p>
+								
+								<p class="theme">
+									<span class="girl">Girls</span>
+								</p>
+								
+								<p class="price">17200</p>
+							</div>
+						</div>		
+					</div>	
+					
+					<div class="box jplist-no-results text-shadow align-center">
+						<p>No results found</p>
+					</div>
+								
+				</div>
+				
+				<!--<><><><><><><><><><><><><><><><><><><><><><><><><><> DEMO END <><><><><><><><><><><><><><><><><><><><><><><><><><>-->				
+			</div>		
+		</div>	
+		
+		<!-- footer -->
+		<footer class="box" id="footer">
+			<div class="center">			
+                <div class="box" >
+					<p id="footer-content" class="align-center glow">
+						<a href="#" title="">Copyright &copy; <script>document.write(new Date().getFullYear())</script> <b>PgOnPalm</b></a>
+					</p>
+					<p id="footer-content" class="align-center glow">
+						Designed and developed by <a href="http://deepakpathania.github.io/" title="author"><b>Deepak Pathania</b></a>
+					</p>						
+				</div>
+			</div>
+		</footer>	
+    </body>
+</html>
