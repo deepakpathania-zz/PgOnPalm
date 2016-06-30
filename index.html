@@ -6,13 +6,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="dist/css/main.css" />
 		<link rel="stylesheet" href="dist/css/custom.css" />
+		<link rel="stylesheet" href="dist/css/animate.css" />
 		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-
+		<style>
+    	.wow:first-child {
+      		visibility: hidden;
+    		}
+  		</style>
 	</head>
 	<body>
 
 		<!-- Header -->
-			<div id="header">
+			<div id="header" class="wow wow bounceInDown">
 				<span class="logo icon fa-home"></span>
 				<h1>PgOnPalm - Discover Homes</h1>
 				<p>We help you find the perfect PG for you as per your needs.
@@ -28,7 +33,7 @@
 		<!-- Main -->
 			<div id="main">
 
-				<header class="major container 75%">
+				<header class="major container 75% wow wow bounceInRight">
 					<h2>We help you find the perfect home for 
 					<br />
 					your accomodation. We even have a
@@ -40,21 +45,21 @@
 				</header>
 
 				<div class="box alt container">
-					<section class="feature left">
+					<section class="feature left wow wow bounceInLeft">
 						<a href="#" class="image icon fa-arrows-h"><img class="img-responsive" src="dist/img/thumbs/pic01.jpg" alt="" /></a>
 						<div class="content">
 							<h3>Easy Move in and Move out</h3>
 							<p>Select.Book.Live. Its that simple.. No worries about hassled moving in and out. Hassle free solution to your housing needs. Find a place that suits your needs by filtering out options. </p>
 						</div>
 					</section>
-					<section class="feature right">
+					<section class="feature right wow wow bounceInRight">
 						<a href="#" class="image icon fa-money"><img class="img-responsive" src="dist/img/thumbs/pic02.jpg" alt="" /></a>
 						<div class="content">
 							<h3>No Brokerage</h3>
 							<p>We help you save hefty brokerage. Save a lot of money. Party with your friends in your newly found house with the money you saved.<br/> Thank us later. Invite us maybe.</p>
 						</div>
 					</section>
-					<section class="feature left">
+					<section class="feature left wow wow bounceInLeft">
 						<a href="#" class="image icon fa-filter"><img class="img-responsive" src="dist/img/thumbs/pic03.jpg" alt="" /></a>
 						<div class="content">
 							<h3>Filtered Service</h3>
@@ -63,7 +68,8 @@
 					</section>
 				</div>
 
-				<footer class="major container 75%">
+				<footer class="major container 75% ">
+				<div class = "wow wow fadeInDown">
 					<h3>Start Searching now</h3>
 					<p>Filter out our inventory as per your interest and discover the perfect home for yourself.<br/> Start looking right now for the best options.</p>
 					<ul class="actions">
@@ -72,13 +78,14 @@
     						Discover
 							</a>
 					</ul>
+				</div>
 				</footer>
 
 			</div>
 
 		<!-- Footer -->
 			<div id="footer">
-				<div class="container 75%">
+				<div class="container 75% wow wow fadeInUp">
 
 					<header class="major last">
 						<h2>Questions or comments?</h2>
@@ -104,6 +111,7 @@
 			<script src="dist/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="dist/js/main.js"></script>
+			<script src="dist/js/wow.js"></script>
 			<script type="text/javascript">
     			document.getElementById("discover").onclick = function () {
         		location.href = "list/discover.html";
@@ -111,7 +119,24 @@
     			document.getElementById("discover2").onclick = function () {
         		location.href = "list/discover.html";
     			};
-</script>
+			</script>
+			<script>
+			    wow = new WOW(
+			      {
+			        animateClass: 'animated',
+			        offset:       100,
+			        callback:     function(box) {
+			          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+			        }
+			      }
+			    );
+			    wow.init();
+			    document.getElementById('moar').onclick = function() {
+			      var section = document.createElement('section');
+			      section.className = 'section--purple wow fadeInDown';
+			      this.parentNode.insertBefore(section, this);
+			    };
+			</script>
 
 
 	</body>
