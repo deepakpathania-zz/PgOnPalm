@@ -5,15 +5,15 @@
        border-radius : 40px !important;
   }
   #discover2 {
-  	background: rgba(205, 216, 211, 0.52) !important;
-  	font-size: 140% !important; 
+  	background : rgba(56,44,58,1) !important;
+    color : white !important;
+    font-size: 140% !important; 
     border-radius : 40px !important;
-    color : #4eb980 !important;
   }
 
   #discover2:hover {
-  	background : rgba(56,44,58,1) !important;
-  	    color : white !important;
+    background: rgba(205, 216, 211, 0.52) !important;
+    color : #4eb980 !important;
   } 
   #home {
     margin-top:8px !important;
@@ -21,3 +21,12 @@
   .jplist-views {
     margin-left:-8px;
   }
+
+  @media (max-width: 768px) {
+  #discover {
+  /*  padding:2px 4px;*/
+    margin-top:15px;
+    font-size:10%;
+    line-height: 1;
+  }
+}
