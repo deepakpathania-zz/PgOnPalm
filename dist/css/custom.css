@@ -3,6 +3,9 @@
        background: #4eb980 !important;
        font-size: 140% !important; 
        border-radius : 40px !important;
+       animation-iteration-count: infinite;
+       -moz-animation-iteration-count: infinite;
+       -webkit-animation-iteration-count: infinite;
   }
   #discover2 {
   	background : rgba(56,44,58,1) !important;
@@ -30,3 +33,4 @@
     line-height: 1;
   }
 }
+
