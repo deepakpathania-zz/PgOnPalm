@@ -33,4 +33,28 @@
     line-height: 1;
   }
 }
+@media (max-width: 1199px) {
+  .tag {
+  color :white;
+    }
+  .sub-tag {
+  color : white;
+  }
+}
 
+@media (min-width: 1200px) {
+.tag {
+  color : rgb(13, 81, 38) !important;
+}
+.sub-tag {
+  color : rgb(0, 81, 38);
+}
+}
+
+.name {
+  font-weight: bold;
+  font-size: 14px;
+}
+.contact {
+  font-style: italic;
+}
