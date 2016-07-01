@@ -20,6 +20,10 @@
   } 
   #home {
     margin-top:8px !important;
+    margin-right : 5px;
+  }
+  #form {
+    margin-top:8px !important;
   }
   .jplist-views {
     margin-left:-8px;
