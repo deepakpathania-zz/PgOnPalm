@@ -27,7 +27,7 @@
     margin-top:8px !important;
   }
   .jplist-views {
-    margin-left:-8px;
+    margin-left:28px;
   }
 
   @media (max-width: 768px) {
@@ -69,4 +69,8 @@
 }
 .hidden {
   display: none;
+}
+.img-thumb {
+  height:150px !important; 
+  width:150px !important;
 }

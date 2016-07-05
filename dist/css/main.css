@@ -3118,6 +3118,8 @@
 					padding: 0.75em 0 0 0;
 				}
 
+	
+
 		/* Header */
 
 			#header {
@@ -3128,5 +3130,4 @@
 				#header br {
 					display: none;
 				}
-
-	}
+}
